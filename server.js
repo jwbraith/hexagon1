@@ -3,8 +3,9 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 
+app.use(express.static('public'));
 app.get('/', (req, res) => {
-  res.send('<h1>Hey, world!</h1>');
+  res.sendFile(__dirname + '/index.html');
 })
 
 server.listen(8000, () => {
