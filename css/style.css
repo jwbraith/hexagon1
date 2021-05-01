@@ -1,0 +1,75 @@
+/* this css styling to produce hexagon tiling is based on 
+work done by Graham Pyne
+found at: https://codepen.io/gpyne/pen/iElhp */
+
+
+:root {
+  --wide: 56px;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(rgb(252, 222,222), rgb(252, 180, 150));
+}
+
+.hex-container {
+  width: calc(var(--wide) * 14);
+  height: 800px;
+  padding: 4px;
+  overflow: auto;
+
+}
+
+.hexagon, .hexagon::before, .hexagon::after {
+  width: var(--wide);
+  height: calc(var(--wide) * 1.732);
+}
+
+.hexagon {
+  display: inline-block;
+  position: relative;
+  margin: 1px calc(var(--wide) * 0.27);
+  z-index: 4;
+  
+
+  cursor: pointer;
+  /* border-radius: 5px; */
+}
+
+.hexagon::before {
+  content: '';
+  z-index: 3;
+  position: absolute;
+  border-radius: inherit;
+  background-color: inherit;
+  transform: rotate(60deg);
+}
+
+.hexagon::after {
+  content: '';
+  float: inline-start;
+  z-index: 2;
+  position: absolute;
+  border-radius: inherit;
+  background-color: inherit;
+  transform: rotate(-60deg);
+}
+
+.hexagon:nth-child(even) {
+  top: calc(var(--wide) * 0.88);
+}
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
