@@ -1,3 +1,5 @@
+var socket = io();
+
 $(document).ready(() => {
   $('.hexagon').on("click", function () {
     if ($(this).hasClass('red')) {
