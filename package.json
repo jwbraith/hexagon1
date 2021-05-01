@@ -1,0 +1,27 @@
+{
+  "name": "hexagon1",
+  "version": "1.0.0",
+  "description": "working socket hexagon attempyt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwbraith/hexagon1.git"
+  },
+  "keywords": [
+    "socket",
+    "hexagon",
+    "game"
+  ],
+  "author": "Team 22",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwbraith/hexagon1/issues"
+  },
+  "homepage": "https://github.com/jwbraith/hexagon1#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
