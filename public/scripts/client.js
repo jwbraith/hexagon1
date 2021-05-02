@@ -1,14 +1,34 @@
 var socket = io();
 
 $(document).ready(() => {
-  $('.hexagon').on("click", function () {
-    if ($(this).hasClass('red')) {
 
-      $(this).removeClass('red');
-      $(this).addClass('blue');
-    } else {
-      $(this).addClass('red');
-      $(this).removeClass('blue');
-    }
+  $('.hexagon').attr('id', function (arr) {
+    return "hex" + arr;
+  });
+
+
+  $('.hexagon').on("click", function (event) {
+    console.log(event.target);
+    console.log($(this).attr('id'));
+    let clickedHex = $(this).attr('id');
+    // SENDING THE MESSAGE TO OTHER SOCKET CONNECTIONS
+
+    socket.emit('hexClick', clickedHex);
+
+  })
+
+  socket.on('clickAnnounced', (hex) => {
+    let hexToChange = $(`#${hex}`);
+    changeColour(hexToChange);
   })
 })
+
+function changeColour(hex) {
+  if (hex.hasClass('red')) {
+    hex.removeClass('red');
+    hex.addClass('blue');
+  } else {
+    hex.removeClass('blue');
+    hex.addClass('red');
+  }
+}

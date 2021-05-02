@@ -11,13 +11,25 @@ app.use(express.static('public'));
 // GET REQUESTS
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-})
+});
 
 // SOCKET.IO
 io.on('connection', (socket) => {
   console.log('a user has connected');
-})
 
+  socket.on('hexClick', (hex) => {
+    console.log(hex);
+    io.emit('clickAnnounced', hex);
+  })
+
+  socket.on('disconnect', () => {
+    console.log('user has disconnected');
+  });
+});
+
+
+
+// SERVER LISTENING
 server.listen(8000, () => {
   console.log('listening on *:8000');
-})
+});
