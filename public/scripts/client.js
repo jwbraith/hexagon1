@@ -17,19 +17,15 @@ $(document).ready(() => {
 
   })
 
-  socket.on('clickAnnounced', (hex, idNumber) => {
-    console.log(idNumber);
+  socket.on('clickAnnounced', (hex, idColour) => {
+    console.log(idColour);
     let hexToChange = $(`#${hex}`);
-    changeColour(hexToChange);
+    changeColour(hexToChange, idColour);
   })
 })
 
-function changeColour(hex) {
-  if (hex.hasClass('red')) {
-    hex.removeClass('red');
-    hex.addClass('blue');
-  } else {
-    hex.removeClass('blue');
-    hex.addClass('red');
+function changeColour(hex, colour) {
+  if (!hex.hasClass(colour)) {
+    hex.css('background-color', colour);
   }
 }

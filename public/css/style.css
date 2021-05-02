@@ -37,6 +37,7 @@ body {
   position: relative;
   margin: 1px calc(var(--wide) * 0.27);
   z-index: 4;
+  background-color: grey;
   
 
   cursor: pointer;
@@ -72,4 +73,21 @@ body {
 
 .red {
   background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+
+}
+
+.orange {
+  background-color: orange;
+}
+
+.purple {
+  background-color: purple;
 }

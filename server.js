@@ -15,25 +15,27 @@ app.get('/', (req, res) => {
 
 let colourlist = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
 
-let userlist = [];
+let userlist = new Map();
 
 // SOCKET.IO
 io.on('connection', (socket) => {
   console.log('a user has connected ' + socket.id);
-  userlist.push({
-    userID: socket.id,
-    colour: colourlist[userlist.length - 1]
-  });
+  console.log('number of connected users is ' + userlist.size);
+  userlist.set(socket.id, colourlist[userlist.size]);
 
   console.log(userlist);
 
   socket.on('hexClick', (hex) => {
+    console.log(userlist.get(socket.id));
     console.log(hex);
-    io.emit('clickAnnounced', hex, socket.id);
+    io.emit('clickAnnounced', hex, userlist.get(socket.id));
   })
 
   socket.on('disconnect', () => {
     console.log('user has disconnected');
+    userlist.delete(socket.id);
+    console.log("number of connected users is " + userlist.size);
+    console.log(userlist);
   });
 });
 
