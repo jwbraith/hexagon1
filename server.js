@@ -13,13 +13,23 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+let colourlist = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+
+let userlist = [];
+
 // SOCKET.IO
 io.on('connection', (socket) => {
-  console.log('a user has connected');
+  console.log('a user has connected ' + socket.id);
+  userlist.push({
+    userID: socket.id,
+    colour: colourlist[userlist.length - 1]
+  });
+
+  console.log(userlist);
 
   socket.on('hexClick', (hex) => {
     console.log(hex);
-    io.emit('clickAnnounced', hex);
+    io.emit('clickAnnounced', hex, socket.id);
   })
 
   socket.on('disconnect', () => {

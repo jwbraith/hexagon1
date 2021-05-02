@@ -17,7 +17,8 @@ $(document).ready(() => {
 
   })
 
-  socket.on('clickAnnounced', (hex) => {
+  socket.on('clickAnnounced', (hex, idNumber) => {
+    console.log(idNumber);
     let hexToChange = $(`#${hex}`);
     changeColour(hexToChange);
   })
