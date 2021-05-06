@@ -8,6 +8,7 @@ $(document).ready(() => {
 
 
   $('.hexagon').on("click", function (event) {
+    console.log($(this));
     console.log(event.target);
     console.log($(this).attr('id'));
     let clickedHex = $(this).attr('id');

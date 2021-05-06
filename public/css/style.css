@@ -2,92 +2,51 @@
 work done by Graham Pyne
 found at: https://codepen.io/gpyne/pen/iElhp */
 
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap');
+
 
 :root {
-  --wide: 56px;
+  --wide: 200px;
 }
 
-*, *::before, *::after {
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Crimson Pro', serif;
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   margin: 0;
-  background: linear-gradient(rgb(252, 222,222), rgb(252, 180, 150));
+  background-color: black;
+}
+
+.header {
+  width: var(--wide) * 6;
+  color: white;
+  font-weight: normal;
 }
 
 .hex-container {
-  width: calc(var(--wide) * 14);
-  height: 800px;
-  padding: 4px;
-  overflow: auto;
-
-}
-
-.hexagon, .hexagon::before, .hexagon::after {
-  width: var(--wide);
-  height: calc(var(--wide) * 1.732);
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(6, var(--wide));
+  grid-template-rows: auto;
+  width: calc(var(--wide) * 6);
+  height: 160px;
+  gap: 0px 10px;
+  padding: 0px;
 }
 
 .hexagon {
-  display: inline-block;
-  position: relative;
-  margin: 1px calc(var(--wide) * 0.27);
-  z-index: 4;
-  background-color: grey;
-  
-
-  cursor: pointer;
-  /* border-radius: 5px; */
+  margin: 0;
+  width: var(--wide);
+  height: var(--wide);
+  object-fit: none;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
-.hexagon::before {
-  content: '';
-  z-index: 3;
-  position: absolute;
-  border-radius: inherit;
-  background-color: inherit;
-  transform: rotate(60deg);
-}
-
-.hexagon::after {
-  content: '';
-  float: inline-start;
-  z-index: 2;
-  position: absolute;
-  border-radius: inherit;
-  background-color: inherit;
-  transform: rotate(-60deg);
-}
-
-.hexagon:nth-child(even) {
-  top: calc(var(--wide) * 0.88);
-}
-
-.blue {
-  background-color: blue;
-}
-
-.red {
-  background-color: red;
-}
-
-.green {
-  background-color: green;
-}
-
-.yellow {
-  background-color: yellow;
-
-}
-
-.orange {
-  background-color: orange;
-}
-
-.purple {
-  background-color: purple;
+.hex-container:nth-child(even) {
+  margin-left: 105px;
 }
